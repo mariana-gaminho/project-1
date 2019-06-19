@@ -59,6 +59,7 @@ class Player1 {
     this.y = 445
     this.width = 90
     this.height = 90
+    this.lives = 5
     this.player1Up = new Image()
     this.player1Down = new Image()
     this.player1Up.src = 'ASSETS/Character/ChUp.png'
@@ -70,12 +71,27 @@ class Player1 {
       this.img= this.img === this.player1Up ? this.player1Down : this.player1Up
     }
     ctx1.drawImage(this.img, this.x, this.y, this.width, this.height)
+    if(this.y < 445) {
+      this.img = this.player1Up
+      this.y+=2
+      if(this.x > canvas1.width - this.width - 20){
+        return
+      } else {this.x++}
+    }
   }
   jump(){
-    this.y -= 10
-    for(let i =0; i<10; i++){
-      this.y++
-    }
+    this.y -= 180
+    if(this.x > canvas1.width - this.width - 20){
+      return
+    } else {this.x+= 10}
+  }
+  isTouching(obstacle) {
+    return (
+      this.x < obstacle.x + obstacle.width &&
+      this.x + this.width > obstacle.x &&
+      this.y < obstacle.y + obstacle.height &&
+      this.y + this.height > obstacle.y
+    )
   }
 }
 
@@ -85,6 +101,7 @@ class Player2 {
     this.y = 445
     this.width = 90
     this.height = 90
+    this.lives = 5
     this.player2Up = new Image()
     this.player2Down = new Image()
     this.player2Up.src = 'ASSETS/Character/ChUpPurple.png'
@@ -96,5 +113,49 @@ class Player2 {
       this.img= this.img === this.player2Up ? this.player2Down : this.player2Up
     }
     ctx2.drawImage(this.img, this.x, this.y, this.width, this.height)
+    if(this.y < 445) {
+      this.img = this.player2Up
+      this.y+=2
+      if(this.x > canvas2.width - this.width - 20){
+        return
+      } else {this.x++}
+    }
+  }
+  jump(){
+    this.y -= 180
+    if(this.x > canvas2.width - this.width - 20){
+      return
+    } else {this.x+=20}
+  }
+  isTouching(obstacle) {
+    return (
+      this.x < obstacle.x + obstacle.width &&
+      this.x + this.width > obstacle.x &&
+      this.y < obstacle.y + obstacle.height &&
+      this.y + this.height > obstacle.y
+    )
+  }
+}
+
+class Obstacle {          
+  constructor(x) {
+    this.x = x
+    this.y = 465
+    this.width = 70
+    this.height= 70
+    this.imgStone = new Image()
+    this.imgStone.src = 'ASSETS/Object/Stone.png'
+    this.imgCrate = new Image()
+    this.imgCrate.src = 'ASSETS/Object/CratePixel.png'
+    this.imgTree = new Image()
+    this.imgTree.src = 'ASSETS/Object/Tree_1.png'
+    this.random = [this.imgStone, this.imgTree, this.imgCrate][Math.floor(Math.random()*3)]
+  }
+  draw() {
+    ctx1.drawImage(this.random, this.x, this.y, this.width, this.height)
+    this.move()
+  }
+  move(){
+    this.x--
   }
 }

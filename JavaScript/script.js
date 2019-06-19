@@ -1,4 +1,7 @@
+
 window.onload = function() {
+  player1.draw()
+  player2.draw()
   addEventListener('keydown', (event) => {
     if(event.keyCode === 13) {
       startGame()
@@ -17,6 +20,10 @@ function update() {
 
   player1.draw()
   player2.draw()
+  
+  drawObstacles()
+  checkCollition(player1)
+  checkCollition(player2)
 }
 
 function startGame() {

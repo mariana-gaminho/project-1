@@ -13,12 +13,23 @@ const player2 = new Player2()
 
 
 //VARIABLES AUXILIARES
-let obstacles = []
 let frames = 0
-let animateHelper = 0
 let interval
-let score1 = 0
-let score2 = 0
+
+let obstaclesCanvas1 = []
+let obstaclesCanvas2 = []
+
+let numOfJumps1 = 0
+let numOfJumps2 = 0
+
+let coinsCanvas1 = []
+let coinsCanvas2 = []
+
+let lives1 = [new Life(500), new Life(450), new Life(400), new Life(350), new Life(300)]
+let lives2 = [new Life(500), new Life(450), new Life(400), new Life(350), new Life(300)]
+
+let distance1 = 0
+let distance2 = 0
 
 
 

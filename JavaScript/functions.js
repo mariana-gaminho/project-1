@@ -105,12 +105,6 @@ function displayScore(){
 }
 
 function displayFinalScores(){
-  let image = new Image()
-  image.src = 'ASSETS/BG/BG.png'
-  let imagePlayer1 = new Image()
-  imagePlayer1.src = 'ASSETS/Character/ChUp.png'
-  let imagePlayer2 = new Image()
-  imagePlayer2.src = 'ASSETS/Character/ChUpPurple.png'
   ctx1.clearRect(0,0, canvas1.width, canvas1.height)
   ctx2.clearRect(0,0, canvas1.width, canvas1.height)
   ctx1.drawImage(image, 0, 0)
@@ -120,11 +114,11 @@ function displayFinalScores(){
   ctx2.font = "100px Inconsolata"
   ctx1.fillStyle = "#373737"
   ctx2.fillStyle = "#373737"
-  if(player1.score > player2.score){
+  if(player1.score > player2.score || player2.lives <= 0){
     ctx1.globalCompositeOperation = 'source-over'
     ctx1.drawImage(imagePlayer1, 380, 250, 100, 100)
     ctx1.fillText('WINNER', 280, 500)
-  } else if(player1.score < player2.score){
+  } else if(player1.score < player2.score || player1.lives <= 0){
     ctx2.globalCompositeOperation = 'source-over'
     ctx2.drawImage(imagePlayer2, 380, 250, 100, 100)
     ctx2.fillText('WINNER',280,500)
@@ -145,4 +139,37 @@ function displayFinalScores(){
   start.innerHTML = '<b>Press ESC to restart</b>'
   playerOne.style.display = 'none'
   playerTwo.style.display = 'none'
+}
+
+function eventExec () {
+  for (let event in events){
+  if(event === "87" && events["87"]){   
+    events["87"] = false
+
+    if(player1.y === 445) numOfJumps1=0
+    if(player1.y >= 300 && numOfJumps1 <= 1){
+      player1.jump()
+      numOfJumps1++
+    } else {
+
+      return
+    }
+  }if(event === "68" && events["68"]){
+    player1.moveRight()
+  }
+  if(event === "38" && events["38"]) {
+    events["38"] = false
+
+    if(player2.y === 445) numOfJumps2=0
+    if(player2.y >= 300 && numOfJumps2 <= 1){
+      player2.jump()
+      numOfJumps2++
+    } else {
+      return
+    }
+  } if(event === "39" && events["39"]){
+    player2.moveRight()
+  }
+}
+
 }

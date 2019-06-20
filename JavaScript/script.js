@@ -24,6 +24,7 @@ window.onload = function() {
 }
 
 function update() {
+  eventExec()
   ctx1.clearRect(0,0, canvas1.width, canvas1.height)
   frames++
   boardOne.draw()
@@ -56,6 +57,11 @@ function update() {
 
   checkCollitionCoin(player2, coinsCanvas2)
   checkCollitionObstacle(player2, obstaclesCanvas2, lives2)
+  if (frames%120 ===0) timer--
+  time.innerHTML = timer
+  if(timer === 0) {
+    boardOne.gameOver()
+  }
 }
 
 function startGame() {

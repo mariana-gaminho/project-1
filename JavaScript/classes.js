@@ -105,7 +105,7 @@ class Player1 {
   }
   moveRight(){
     if(this.x > canvas1.width - this.width - 20) return
-    this.x += 10
+    this.x += 2
   }
   isTouching(obstacle) {
     return (
@@ -170,7 +170,7 @@ class Player2 {
   }
   moveRight(){
     if(this.x > canvas1.width - this.width - 20) return
-    this.x += 10
+    this.x += 2
   }
   isTouching(obstacle) {
     return (

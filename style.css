@@ -45,3 +45,10 @@ canvas{
   flex-direction:row;
   justify-content: space-around;
 }
+
+#timer {
+  color: whitesmoke;
+  font-size: 50px;
+  position: fixed;
+  margin-left: 44%;
+}

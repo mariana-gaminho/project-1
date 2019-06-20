@@ -51,6 +51,7 @@ class Board {
   }
   gameOver(){
     clearInterval(interval)
+    displayFinalScores()
   }
 }
 
@@ -68,7 +69,7 @@ class Player1 {
     this.player1Down.src = 'ASSETS/Character/ChDown.png'
     this.img = this.player1Up
     this.jumpingSound = new Audio()
-    //this.jumpingSound.src = 'sounds/wav/smb3/smb3_jump.wav'
+    this.jumpingSound.src = 'http://www.mariomayhem.com/downloads/sounds/Super_Smash_Bros_Sound_Effects_USA_JPN/Jump%202.wav'
   }
  draw(){
     ctx1.drawImage(this.img, this.x, this.y, this.width, this.height)
@@ -87,11 +88,12 @@ class Player1 {
     }
   }
   jump(){
+    this.jumpingSound.play()
     this.y -= 180
     if(this.x > canvas1.width - this.width - 20){
       return
     } else {
-      this.x+= 10
+      this.x+= 5
       }  
     }
   move(){
@@ -133,7 +135,7 @@ class Player2 {
     this.player2DownBack.src = 'ASSETS/Character/ChDownPurpleBack.png'
     this.img = this.player2Up
     this.jumpingSound = new Audio()
-    //this.jumpingSound.src = 'sounds/wav/smb3/smb3_jump.wav'
+    this.jumpingSound.src = 'http://www.mariomayhem.com/downloads/sounds/Super_Smash_Bros_Sound_Effects_USA_JPN/Jump%202.wav'
   }
  draw(){
   ctx2.drawImage(this.img, this.x, this.y, this.width, this.height)
@@ -152,10 +154,12 @@ class Player2 {
     }
   }
   jump(){
+    this.jumpingSound.play()
     this.y -= 180
     if(this.x > canvas2.width - this.width - 20){
       return
     } else {this.x+=20}
+
   }
   move(){
     if(this.x <= 50){
@@ -193,7 +197,7 @@ class Obstacle {
     this.random1 = [this.imgStone, this.imgTree, this.imgCrate][Math.floor(Math.random()*3)]
     this.random2 = [this.imgStone, this.imgTree, this.imgCrate][Math.floor(Math.random()*3)]
     this.audio = new Audio()
-    //this.audio.src = 'sounds/wav/smb3/smb3_bump.wav'
+    this.audio.src = 'http://www.mariomayhem.com/downloads/sounds/super_mario_bros/smb_bump.wav'
   }
   draw1() {
     ctx1.drawImage(this.random1, this.x, this.y, this.width, this.height)
@@ -228,7 +232,7 @@ class Coin {
     this.coin6.src = 'ASSETS/Coin/Coin6.png'
     this.img = this.coin1
     this.audio = new Audio()
-    //this.audio.src = "sounds/wav/smb3/smb3_coin.wav"
+    this.audio.src = "http://soundfxcenter.com/video-games/super-mario-bros/8d82b5_Super_Mario_Bros_Coin_Sound_Effect.mp3"
   }
   draw1(){
     ctx1.drawImage(this.img, this.x, this.y, this.width, this.height)

@@ -61,6 +61,6 @@ function update() {
 function startGame() {
   if(interval) return
   interval = setInterval(update, 1000/120)
-  start.style.display = 'none'
+  start.innerHTML = '<b>Press ESC to exit</b>'
   pause.style.display = ''
 }

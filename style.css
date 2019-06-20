@@ -28,15 +28,15 @@ canvas{
   padding-top: 40px;
 }
 
-#player1, #player2 {
+#playerOne, #playerTwo {
   padding-top: 30px;
 }
 
-#player1 {
+#playerOne {
   padding-left: 200px;
 }
 
-#player2 {
+#playerTwo {
   padding-right: 200px;
 }
 

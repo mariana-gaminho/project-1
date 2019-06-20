@@ -26,3 +26,9 @@ addEventListener('keydown', event => {
   }
 })
 
+addEventListener('keyup', event => {
+  if(event.keyCode === 27) {
+    location.reload(true)
+    localStorage.clear()  } 
+})
+

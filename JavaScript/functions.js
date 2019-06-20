@@ -67,20 +67,16 @@ function checkCollitionObstacle(player, array, lives) {
   let touchIndex
   array.map((obstacle, index) => {
     if(player.isTouching(obstacle)) {
-      touchIndex = index
-      if(player.score === 0){
-        console.log(player.score)
+      obstacle.audio.play()
+        touchIndex = index
         player.lives--
         lives.shift()
         if(player.lives <= 0){
           setTimeout(()=>{
             boardOne.gameOver()
             boardTwo.gameOver()
-          },500)
+          },200)
         }
-      } else {
-        player.score--
-      }
     }
   }) 
   if(touchIndex!== undefined)array.splice(touchIndex,1)
@@ -106,4 +102,47 @@ function displayScore(){
   ctx2.fillStyle = '#000000'
   ctx2.font = '48px Inconsolata'
   ctx2.fillText(`Score: ${player2.score}`, 40, 93)
+}
+
+function displayFinalScores(){
+  let image = new Image()
+  image.src = 'ASSETS/BG/BG.png'
+  let imagePlayer1 = new Image()
+  imagePlayer1.src = 'ASSETS/Character/ChUp.png'
+  let imagePlayer2 = new Image()
+  imagePlayer2.src = 'ASSETS/Character/ChUpPurple.png'
+  ctx1.clearRect(0,0, canvas1.width, canvas1.height)
+  ctx2.clearRect(0,0, canvas1.width, canvas1.height)
+  ctx1.drawImage(image, 0, 0)
+  ctx2.drawImage(image, 0, 0)
+
+  ctx1.font = "100px Inconsolata";
+  ctx2.font = "100px Inconsolata"
+  ctx1.fillStyle = "#373737"
+  ctx2.fillStyle = "#373737"
+  if(player1.score > player2.score){
+    ctx1.globalCompositeOperation = 'source-over'
+    ctx1.drawImage(imagePlayer1, 380, 250, 100, 100)
+    ctx1.fillText('WINNER', 280, 500)
+  } else if(player1.score < player2.score){
+    ctx2.globalCompositeOperation = 'source-over'
+    ctx2.drawImage(imagePlayer2, 380, 250, 100, 100)
+    ctx2.fillText('WINNER',280,500)
+  } else {
+    ctx1.fillText('TIE',280,500)
+    ctx2.fillText('TIE',280,500)
+  }
+
+  ctx1.font = "100px Inconsolata";
+  ctx1.fillStyle = "#373737"
+  ctx1.fillText(`SCORE: ${player1.score}`, 200, 200)
+
+  ctx2.font = "100px Inconsolata";
+  ctx2.fillStyle = "#373737"
+  ctx2.fillText(`SCORE: ${player2.score}`, 200, 200)
+
+  pause.style.display = 'none'
+  start.innerHTML = '<b>Press ESC to restart</b>'
+  playerOne.style.display = 'none'
+  playerTwo.style.display = 'none'
 }

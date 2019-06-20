@@ -10,7 +10,7 @@ function generateObstacles2() {
 }
 
 function drawObstacles1() {
-  if(frames === 90 || frames % 600 === 0 || frames % 1900 === 0){
+  if(frames === 90 || frames % 500 === 0 || frames % 1900 === 0){
     generateObstacles1()
   }
 
@@ -20,7 +20,7 @@ function drawObstacles1() {
 }
 
 function drawObstacles2() {
-  if(frames === 120 ||frames % 400 === 0 || frames % 1700 === 0){
+  if(frames === 50 ||frames % 600 === 0 || frames % 1700 === 0){
     generateObstacles2()
   }
 
@@ -63,24 +63,47 @@ function drawCoins2() {
 
 //COLLITIONS
 
-function checkCollitionObstacle(player, array) {
+function checkCollitionObstacle(player, array, lives) {
+  let touchIndex
   array.map((obstacle, index) => {
     if(player.isTouching(obstacle)) {
+      touchIndex = index
       if(player.score === 0){
+        console.log(player.score)
         player.lives--
-        array.splice(index,1)
+        lives.shift()
+        if(player.lives <= 0){
+          setTimeout(()=>{
+            boardOne.gameOver()
+            boardTwo.gameOver()
+          },500)
+        }
       } else {
         player.score--
       }
     }
-  })
+  }) 
+  if(touchIndex!== undefined)array.splice(touchIndex,1)
 }
 
 function checkCollitionCoin(player, array) {
   array.map((coin, index) => {
     if(player.isTouching(coin)) {
         player.score++
+        console.log(player.score)
         array.splice(index,1)
+        coin.audio.play()
     }
   })
+}
+
+//DRAW SCORES
+function displayScore(){
+  ctx1.fillStyle = '#000000'
+  ctx1.font = '48px Inconsolata'
+  ctx1.fillText(`Score: ${player1.score}`, 40, 93)
+
+  ctx2.fillStyle = '#000000'
+  ctx2.font = '48px Inconsolata'
+  ctx2.fillText(`Score: ${player2.score}`, 40, 93)
 }

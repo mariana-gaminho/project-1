@@ -50,6 +50,7 @@ class Board {
     if(this.xFloor< -this.imgFloor.width) this.xFloor = 0
   }
   gameOver(){
+    clearInterval(interval)
   }
 }
 
@@ -62,10 +63,12 @@ class Player1 {
     this.lives = 5
     this.score = 0
     this.player1Up = new Image()
-    this.player1Up.src = 'ASSETS/Character/ChUp.png'
+    this.player1Up.src = 'ASSETS/Character/ChUp.png'  
     this.player1Down = new Image()
     this.player1Down.src = 'ASSETS/Character/ChDown.png'
     this.img = this.player1Up
+    this.jumpingSound = new Audio()
+    //this.jumpingSound.src = 'sounds/wav/smb3/smb3_jump.wav'
   }
  draw(){
     ctx1.drawImage(this.img, this.x, this.y, this.width, this.height)
@@ -129,6 +132,8 @@ class Player2 {
     this.player2DownBack = new Image()
     this.player2DownBack.src = 'ASSETS/Character/ChDownPurpleBack.png'
     this.img = this.player2Up
+    this.jumpingSound = new Audio()
+    //this.jumpingSound.src = 'sounds/wav/smb3/smb3_jump.wav'
   }
  draw(){
   ctx2.drawImage(this.img, this.x, this.y, this.width, this.height)
@@ -187,6 +192,8 @@ class Obstacle {
     this.imgTree.src = 'ASSETS/Object/Tree_1.png'
     this.random1 = [this.imgStone, this.imgTree, this.imgCrate][Math.floor(Math.random()*3)]
     this.random2 = [this.imgStone, this.imgTree, this.imgCrate][Math.floor(Math.random()*3)]
+    this.audio = new Audio()
+    //this.audio.src = 'sounds/wav/smb3/smb3_bump.wav'
   }
   draw1() {
     ctx1.drawImage(this.random1, this.x, this.y, this.width, this.height)
@@ -220,6 +227,8 @@ class Coin {
     this.coin6 = new Image()
     this.coin6.src = 'ASSETS/Coin/Coin6.png'
     this.img = this.coin1
+    this.audio = new Audio()
+    //this.audio.src = "sounds/wav/smb3/smb3_coin.wav"
   }
   draw1(){
     ctx1.drawImage(this.img, this.x, this.y, this.width, this.height)
@@ -260,9 +269,9 @@ class Coin {
 class Life{
   constructor(x){
     this.x = x
-    this.y = -canvas1.height + 70
-    this.width = 40
-    this.height = 40
+    this.y = 50
+    this.width = 55
+    this.height = 55
     this.life = new Image()
     this.life.src = 'ASSETS/Object/Heart.png'
   }

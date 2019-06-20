@@ -2,12 +2,23 @@
 window.onload = function() {
   player1.draw()
   player2.draw()
+  pause.style.display='none'
   addEventListener('keydown', (event) => {
     if(event.keyCode === 13) {
       startGame()
-    } else if(event.keyCode ===32) {
-      clearInterval(interval)
-      interval = false
+    } else if(event.keyCode ===32 ) {
+      if(!stop){
+        clearInterval(interval)
+        audioStop.play()
+        interval = false
+        stop = true
+        pause.innerHTML = '<b>Press SPACEBAR to continue</b>'
+        return
+      }
+      stop = false
+      pause.innerHTML = '<b>Press SPACEBAR to pause</b>'
+      audioStop.play()
+      startGame()
     }
   })
 }
@@ -37,15 +48,19 @@ function update() {
     life.draw2()
   })
 
-  checkCollitionObstacle(player1, obstaclesCanvas1)
-  checkCollitionObstacle(player2, obstaclesCanvas2)
+  displayScore()
+  displayScore()
 
   checkCollitionCoin(player1, coinsCanvas1)
-  checkCollitionCoin(player2, coinsCanvas2)
+  checkCollitionObstacle(player1, obstaclesCanvas1, lives1)
 
+  checkCollitionCoin(player2, coinsCanvas2)
+  checkCollitionObstacle(player2, obstaclesCanvas2, lives2)
 }
 
 function startGame() {
   if(interval) return
   interval = setInterval(update, 1000/120)
+  start.style.display = 'none'
+  pause.style.display = ''
 }

@@ -9,7 +9,6 @@ window.onload = function() {
     } else if(event.keyCode ===32 ) {
       if(!stop){
         clearInterval(interval)
-        audioStop.play()
         interval = false
         stop = true
         pause.innerHTML = '<b>Press SPACEBAR to continue</b>'
@@ -17,7 +16,6 @@ window.onload = function() {
       }
       stop = false
       pause.innerHTML = '<b>Press SPACEBAR to pause</b>'
-      audioStop.play()
       startGame()
     }
   })
@@ -59,9 +57,11 @@ function update() {
   checkCollitionObstacle(player2, obstaclesCanvas2, lives2)
   if (frames%120 ===0) timer--
   time.innerHTML = timer
-  if(timer === 0) {
-    boardOne.gameOver()
+  if(timer === 7) {
+    audio7Sec.play()
   }
+ 
+  if(timer === 0) boardOne.gameOver()
 }
 
 function startGame() {

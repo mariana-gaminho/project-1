@@ -24,7 +24,7 @@ const player2 = new Player2()
 let frames = 0
 let stop = false
 let interval
-let timer = 30
+let timer = 20
 const events = {
   "87" : false,
   "68": false,
@@ -48,15 +48,19 @@ let lives2 = [new Life(500), new Life(550), new Life(600), new Life(650), new Li
 let distance1 = 0
 let distance2 = 0
 
-let audioStop = new Audio()
-//audioStop.src = 'sounds/wav/smb3/smb3_pause.wav'
+let audio7Sec = new Audio()
+audio7Sec.src = 'http://s1download-universal-soundbank.com/wav/3240.wav'
 
-let image = new Image()
+
+//IMÁGENES PARA FUNCIÓN GAME OVER
+  let image = new Image()
   image.src = 'ASSETS/BG/BG.png'
   let imagePlayer1 = new Image()
   imagePlayer1.src = 'ASSETS/Character/ChUp.png'
   let imagePlayer2 = new Image()
   imagePlayer2.src = 'ASSETS/Character/ChUpPurple.png'
+  let heart = new Image()
+  heart.src = 'ASSETS/Object/Heart.png'
 
 
 

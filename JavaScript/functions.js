@@ -114,26 +114,62 @@ function displayFinalScores(){
   ctx2.font = "100px Inconsolata"
   ctx1.fillStyle = "#373737"
   ctx2.fillStyle = "#373737"
-  if(player1.score > player2.score || player2.lives <= 0){
-    ctx1.globalCompositeOperation = 'source-over'
-    ctx1.drawImage(imagePlayer1, 380, 250, 100, 100)
-    ctx1.fillText('WINNER', 280, 500)
-  } else if(player1.score < player2.score || player1.lives <= 0){
-    ctx2.globalCompositeOperation = 'source-over'
-    ctx2.drawImage(imagePlayer2, 380, 250, 100, 100)
-    ctx2.fillText('WINNER',280,500)
+
+  if(timer === 0){
+
+    ctx1.font = "90px Inconsolata";
+    ctx1.fillStyle = "#373737"
+    ctx1.fillText(`SCORE: ${player1.score}`, 210, 165)
+    ctx2.font = "90px Inconsolata";
+    ctx2.fillStyle = "#373737"
+    ctx2.fillText(`SCORE: ${player2.score}`, 210, 165)
+
+    if(player1.score > player2.score){
+      ctx1.globalCompositeOperation = 'source-over'
+      ctx1.drawImage(imagePlayer1, 320, 245, 120, 120)
+      ctx1.fillText('WINNER', 250, 550)
+    } else if(player2.score > player1.score){
+      ctx2.globalCompositeOperation = 'source-over'
+      ctx2.drawImage(imagePlayer2, 320, 245, 120, 120)
+      ctx2.fillText('WINNER',250,550)
+    } else {
+      ctx1.drawImage(imagePlayer1, 320, 245, 120, 120)
+      ctx1.fillText('TIE',310,550)
+      ctx2.drawImage(imagePlayer2, 320, 245, 120, 120)
+      ctx2.fillText('TIE',310,550)
+    }
   } else {
-    ctx1.fillText('TIE',280,500)
-    ctx2.fillText('TIE',280,500)
+
+    ctx1.font = "90px Inconsolata";
+    ctx1.fillStyle = "#373737"
+    ctx1.drawImage(heart, 300, 165, 100, 100); ctx1.fillText(`${player1.lives}`, 450, 250)
+    ctx2.font = "90px Inconsolata";
+    ctx2.fillStyle = "#373737"
+    ctx2.drawImage(heart, 300, 165, 100, 100); ctx2.fillText(`${player2.lives}`, 450, 250)
+
+    if(player1.lives === 0 && player2.lives > 0){
+      ctx1.globalCompositeOperation = 'source-over'
+      ctx2.drawImage(imagePlayer2, 340, 300, 100, 100)
+      ctx2.fillText('WINNER', 250, 550)
+    } else if(player2.lives === 0 && player1.lives > 0){
+      ctx1.globalCompositeOperation = 'source-over'
+      ctx1.drawImage(imagePlayer1, 340, 300, 100, 100)
+      ctx1.fillText('WINNER',250,550)
+    } else if(player1.lives===0&&player2.lives===0){
+      ctx1.fillText('TIE',310,550)
+      ctx2.fillText('TIE',310,550)
+    }
   }
 
-  ctx1.font = "100px Inconsolata";
-  ctx1.fillStyle = "#373737"
-  ctx1.fillText(`SCORE: ${player1.score}`, 200, 200)
+  // ctx1.font = "90px Inconsolata";
+  // ctx1.fillStyle = "#373737"
+  // ctx1.fillText(`SCORE: ${player1.score}`, 210, 145)
+  // ctx1.drawImage(heart, 300, 175, 100, 100); ctx1.fillText(`${player1.lives}`, 450, 250)
 
-  ctx2.font = "100px Inconsolata";
-  ctx2.fillStyle = "#373737"
-  ctx2.fillText(`SCORE: ${player2.score}`, 200, 200)
+  // ctx2.font = "90px Inconsolata";
+  // ctx2.fillStyle = "#373737"
+  // ctx2.fillText(`SCORE: ${player2.score}`, 210, 145)
+  // ctx2.drawImage(heart, 300, 175, 100, 100); ctx2.fillText(`${player2.lives}`, 450, 250)
 
   pause.style.display = 'none'
   start.innerHTML = '<b>Press ESC to restart</b>'

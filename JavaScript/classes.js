@@ -233,6 +233,7 @@ class Coin {
     this.img = this.coin1
     this.audio = new Audio()
     this.audio.src = "http://soundfxcenter.com/video-games/super-mario-bros/8d82b5_Super_Mario_Bros_Coin_Sound_Effect.mp3"
+    this.audio.volume = 0.2
   }
   draw1(){
     ctx1.drawImage(this.img, this.x, this.y, this.width, this.height)

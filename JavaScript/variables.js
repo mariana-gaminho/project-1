@@ -50,6 +50,9 @@ let distance2 = 0
 
 let audio7Sec = new Audio()
 audio7Sec.src = 'http://s1download-universal-soundbank.com/wav/3240.wav'
+audio7Sec.volume = 0.5
+// let audioStarStop = new Audio()
+// audioStarStop.src = 
 
 
 //IMÁGENES PARA FUNCIÓN GAME OVER

@@ -8,12 +8,14 @@ window.onload = function() {
       startGame()
     } else if(event.keyCode ===32 ) {
       if(!stop){
+        if(timer <= 7) audio7Sec.pause()
         clearInterval(interval)
         interval = false
         stop = true
         pause.innerHTML = '<b>Press SPACEBAR to continue</b>'
         return
       }
+      if(timer <= 7) audio7Sec.play()
       stop = false
       pause.innerHTML = '<b>Press SPACEBAR to pause</b>'
       startGame()
@@ -61,10 +63,14 @@ function update() {
     audio7Sec.play()
   }
  
-  if(timer === 0) boardOne.gameOver()
+  if(timer === 0) {
+    //audioStarStop.play()
+    boardOne.gameOver()
+  }
 }
 
 function startGame() {
+  //audioStarStop.play()
   if(interval) return
   interval = setInterval(update, 1000/120)
   start.innerHTML = '<b>Press ESC to exit</b>'

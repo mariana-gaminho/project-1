@@ -139,7 +139,7 @@ function displayFinalScores(){
       ctx2.fillText('TIE',310,550)
     }
   } else {
-
+    if(timer <=7) audio7Sec.pause()
     ctx1.font = "90px Inconsolata";
     ctx1.fillStyle = "#373737"
     ctx1.drawImage(heart, 300, 165, 100, 100); ctx1.fillText(`${player1.lives}`, 450, 250)

@@ -61,7 +61,7 @@ class Player1 {
     this.y = 445
     this.width = 90
     this.height = 90
-    this.lives = 5
+    this.lives = 1
     this.score = 0
     this.player1Up = new Image()
     this.player1Up.src = 'ASSETS/Character/ChUp.png'  
@@ -123,7 +123,7 @@ class Player2 {
     this.y = 445
     this.width = 90
     this.height = 90
-    this.lives = 5
+    this.lives = 1
     this.score = 0
     this.player2Up = new Image()
     this.player2Up.src = 'ASSETS/Character/ChUpPurple.png'

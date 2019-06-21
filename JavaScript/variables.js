@@ -24,7 +24,7 @@ const player2 = new Player2()
 let frames = 0
 let stop = false
 let interval
-let timer = 20
+let timer = 30
 const events = {
   "87" : false,
   "68": false,

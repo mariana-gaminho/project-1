@@ -156,6 +156,8 @@ function displayFinalScores(){
       ctx1.drawImage(imagePlayer1, 340, 300, 100, 100)
       ctx1.fillText('WINNER',250,550)
     } else if(player1.lives===0&&player2.lives===0){
+      ctx1.drawImage(imagePlayer1, 340, 300, 100, 100)
+      ctx2.drawImage(imagePlayer2, 340, 300, 100, 100)
       ctx1.fillText('TIE',310,550)
       ctx2.fillText('TIE',310,550)
     }

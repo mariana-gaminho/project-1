@@ -1,4 +1,4 @@
-# Dual Race
+# Dual Race 🏁
 
 ## By Mariana Gamiño
 

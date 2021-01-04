@@ -2,11 +2,18 @@
 {
   font-family: 'Inconsolata', monospace;
 }
-#Board-One, #Board-Two {
+#Board-One {
   margin-left: 80px;
+}
+
+#Board-Two {
+  margin-right: 80px;
+}
+
+#Board-One, #Board-Two {
   margin-top: 80px;
   margin-bottom: 20px;
-} 
+}
 
 body {
   background-color: #373737;

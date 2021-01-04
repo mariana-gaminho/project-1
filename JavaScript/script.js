@@ -21,6 +21,7 @@ window.onload = function() {
       startGame()
     }
   })
+  alert('Please adjust screen zoom so that both scenarios can be seen in the screen')
 }
 
 function update() {

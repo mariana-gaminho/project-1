@@ -6,3 +6,6 @@ Dual race is a videogame for two players built with pure JavaScript, HTML and CS
 *Adjust zoom so that both scenarios can be seen in the screen.
 
 https://mariana-gaminho.github.io/project-1/
+
+
+<img width="1000" alt="Screen Shot 2022-10-31 at 17 02 35" src="https://user-images.githubusercontent.com/51060400/199125948-7db2555b-ff4e-4edf-9949-455143ec875c.png">
